@@ -1,3 +1,38 @@
+$border: 1px solid #000;
+$gap: 1px;
+$day-size: 100px;
+$columns: 7;
+$paddings: 10px;
+$calendar-width: $columns * $day-size + ($columns - 1) * $gap + $paddings * 2;
+
 body {
   margin: 0;
+}
+
+.calendar {
+  width: $calendar-width;
+  display: flex;
+  flex-wrap: wrap;
+  gap: $gap;
+  padding: $paddings;
+
+  &__day {
+    height: $day-size;
+    width: $day-size;
+    background-color: #eee;
+    border: $border;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    @for $i from 1 through 31 {
+      &:nth-child(#{$i})::before {
+        content: '#{$i}';
+        font-family: Arial, sans-serif;
+        font-size: 30px;
+      }
+    }
+  }
 }
