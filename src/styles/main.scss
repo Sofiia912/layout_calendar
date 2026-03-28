@@ -62,4 +62,10 @@ body {
       margin-left: $col * ($day-size + $gap);
     }
   }
+
+  @for $m from 28 through 31 {
+    &--month-#{$m} .calendar__day:nth-child(n + #{$m + 1}) {
+      display: none;
+    }
+  }
 }
